@@ -5,6 +5,9 @@ from .models import Tweet
 from django.contrib.auth.forms import AuthenticationForm
 
 class TweetForm(forms.ModelForm):
+  
+    photo = forms.ImageField(required=True)
+
     class Meta:
         model = Tweet
         fields = ['text', 'photo']

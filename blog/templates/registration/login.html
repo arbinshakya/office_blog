@@ -4,7 +4,7 @@
 <div class="container mt-3 justify-content-center align-items-center" style="height: 60vh; display: flex; flex-direction: column;">
     <h2 class="text-center mb-4">Login</h2>
     <div class="row flex justify-content-center align-items-center w-100">
-        <div class="col-md-4"> <!-- Adjusted column size to col-md-4 -->
+        <div class="col-md-4">
             <div class="card shadow">
                 <div class="card-body">
                     <form method="post">
@@ -12,14 +12,13 @@
                         
                         <!-- Username input -->
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="text" id="form2Example1" class="form-control" name="username" value="{{ form.username.value|default_if_none:'' }}" required/>
-                            <label class="form-label" for="form2Example1">Username</label>
+                            <input type="text" id="form2Example1" class="form-control" name="username" placeholder="Username" value="{{ form.username.value|default_if_none:'' }}" required/>
                         </div>
 
                         <!-- Password input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="password" id="form2Example2" class="form-control" name="password" required/>
-                            <label class="form-label" for="form2Example2">Password</label>
+                        <div class="form-outline mb-4 position-relative">
+                            <input type="password" id="form2Example2" class="form-control" name="password" placeholder="Password" required/>
+                            <i class="fa fa-eye" id="togglePassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer;"></i>
                         </div>
 
                         <!-- Submit button -->
@@ -37,4 +36,14 @@
         </div>
     </div>
 </div>
+
+<!-- JavaScript to toggle password visibility -->
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        const passwordField = document.getElementById('form2Example2');
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
 {% endblock %}

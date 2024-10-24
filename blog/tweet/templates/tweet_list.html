@@ -13,6 +13,30 @@
         <h1 class="text-center font-weight-bold mt-3" style="font-family: Arial, sans-serif;">Welcome to BLOG ME</h1>
         <p class="text-center">Please log in to start creating and managing your blog posts.</p>
     {% endif %}
+
+    <style>
+        /* Add hover effect to cards */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth hover transition */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);  /* Move the card up slightly */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  /* Add a shadow on hover */
+        }
+
+        .btn-primary {
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+
+
+
+
     <div class="container">
         <div class="row mb-4">
             <div class="col-md-4">
@@ -32,9 +56,9 @@
                             <h5 class="card-title">{{ tweet.user.username }}</h5>
                             <p class="card-text flex-grow-1">{{ tweet.text }}</p>
                             {% if tweet.user == user %}
-                                <div class="d-flex">
-                                    <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary " style="margin-right: 0.5rem;" >Edit</a>
-                                    <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger ">Delete</a>
+                                <div class="d-flex" >
+                                    <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary rounded-pill" style="margin-right: 0.5rem;" >Edit</a>
+                                    <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger rounded-pill">Delete</a>
                                 </div>
                             {% endif %}
                         </div>

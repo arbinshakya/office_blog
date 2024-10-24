@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Tweet
-from .forms import TweetForm, UserRegistrationForm
+from forms import TweetForm, UserRegistrationForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
@@ -29,6 +29,7 @@ def tweet_create(request):
             return redirect('tweet_list')
     else:
         form = TweetForm()
+        print(form)
     return render(request, 'tweet_form.html', {'form': form})
 
 
